@@ -1,0 +1,103 @@
+<!-- Licensed to the Apache Software Foundation (ASF) under one or more contributor -->
+<!-- license agreements; and to You under the Apache License, Version 2.0. -->
+
+<button class="btn btn-primary" [routerLink]="['/participantTrainingAvailableList', participantId]" style="margin-bottom: 15px;" 
+	*ngIf="this.auth.canEditParticipantData()">
+	<span class="icon icon-circle-with-plus" style="padding-right: 5px;"></span>Add Training
+</button>
+<div style="float: right;">
+	<label style="text-align: left; white-space: nowrap;">Show
+	<select class="form-control input-sm" style="display: inline-block; width: 60px;" [(ngModel)]="rowsOnPage">
+		<option [ngValue]="5">5</option>
+		<option [ngValue]="10">10</option>
+		<option [ngValue]="20">20</option>
+	</select>
+	entries
+	</label>
+</div>
+<div *ngIf="participantTrainings.length > 0" class="table-full" style="clear: both;">
+	<div class="table-responsive">
+		<table class="table" id="trainingTable" [mfData]="participantTrainings" #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage">
+			<thead>
+				<tr>		
+					<th><mfDefaultSorter by="training">Training</mfDefaultSorter></th>
+					<th><mfDefaultSorter by="timeToComplete">Time to complete</mfDefaultSorter></th>
+					<th><mfDefaultSorter by="dateCompleted">Date completed</mfDefaultSorter></th>
+					<th style="text-align: center;" *ngIf="auth.canEditParticipantData()">Edit</th>
+					<th style="text-align: center;" *ngIf="auth.canEditParticipantData()">Remove</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let t of mf.data">
+					<td>{{ t.training }}</td>
+					<td>{{ t.timeToCompleteString }}</td>
+					<td>{{ t.dateCompleted }}</td>
+					<td class="tdWithIcon" *ngIf="auth.canEditParticipantData()"><span class="icon icon-edit iconAs-link iconEdit" data-toggle="modal" data-target="#editModal" (click)="onSelect(t)"></span></td>	
+					<td class="tdWithIcon" *ngIf="auth.canEditParticipantData()"><span class="icon icon-trash iconAs-link iconDelete" data-toggle="modal" data-target="#deleteModal" (click)="onSelect(t)"></span></td>		
+				</tr>				
+			</tbody>
+			<tfoot>
+		    	<tr>
+		        	<td colspan="5">
+		            	<mfBootstrapPaginator></mfBootstrapPaginator>		            	
+		        	</td>
+		    	</tr>
+		    </tfoot>
+		</table>
+	</div>
+</div>
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog modal-md">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">Edit Training</h4>
+			</div>
+			<div class="modal-body">
+				<div class="form-horizontal">
+					<div class="form-group">
+						<label class="control-label col-sm-4">Date Completed:</label>
+						<div class="col-sm-4"> 
+							<input type="date" class="form-control" [(ngModel)]="selectedTraining.dateCompleted" name="dateCompleted" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-4">Time to Complete:</label>
+						<div class="col-sm-8"> 
+							<input type="number" class="form-control" [(ngModel)]="hoursInput" min="0" name="hoursInput" style="display: inline-block; width: 75px;" /> hours
+							<input type="number" class="form-control" [(ngModel)]="minutesInput" min="0" name="minutesInput" style="display: inline-block; width: 75px;" /> minutes
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-actions">
+				<button type="button" class="btn-link modal-action" data-dismiss="modal">Cancel</button>
+				<button type="button" class="btn-link modal-action" data-dismiss="modal" (click)="save()">
+				<strong>Save</strong>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">Remove Training</h4>
+			</div>
+			<div class="modal-body">
+				<p>Are you sure?</p>
+			</div>
+			<div class="modal-actions">
+				<button type="button" class="btn-link modal-action" data-dismiss="modal">Cancel</button>
+				<button type="button" class="btn-link modal-action" data-dismiss="modal" (click)="delete()">
+				<strong>Continue</strong>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+<button class="btn btn-primary" [routerLink]="['/participants']" style="float: right;">
+	Back to Participants
+</button>

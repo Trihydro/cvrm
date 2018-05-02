@@ -1,0 +1,181 @@
+<!-- Licensed to the Apache Software Foundation (ASF) under one or more contributor -->
+<!-- license agreements; and to You under the Apache License, Version 2.0. -->
+
+<div *ngIf="manageUsers">
+	<button class="btn btn-primary" (click)="inviteNewUser()" style="margin-bottom: 15px;">
+		<span class="icon icon-circle-with-plus" style="padding-right: 5px;"></span>Invite New User
+	</button>
+	<div *ngIf="saveSuccess" class="text-success" style="display: inline-block; padding-left: 15px; font-weight: bold;">Save successful!</div>
+	<div *ngIf="emailSent" class="text-success" style="display: inline-block; padding-left: 15px; font-weight: bold;">Email sent!</div>
+	<div style="float: right;">
+		<label style="text-align: left; white-space: nowrap;">Show
+		<select class="form-control input-sm" style="display: inline-block; width: 60px;" [(ngModel)]="rowsOnPage">
+			<option [ngValue]="5">5</option>
+			<option [ngValue]="10">10</option>
+			<option [ngValue]="15">15</option>
+		</select>
+		entries
+		</label>
+	</div>
+	<div style="clear: both;" class="table-full">
+		<div class="table-responsive">
+			<table class="table" [mfData]="users" #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage">
+				<thead>
+					<tr>		
+						<th><mfDefaultSorter by="name">Name</mfDefaultSorter></th>
+						<th><mfDefaultSorter by="email">Email</mfDefaultSorter></th>
+						<th><mfDefaultSorter by="organization">Organization</mfDefaultSorter></th>
+					    <th><mfDefaultSorter by="rolesList">Role(s)</mfDefaultSorter></th>
+					    <th><mfDefaultSorter by="rolesList">Email Verified</mfDefaultSorter></th>
+					    <th><mfDefaultSorter by="rolesList">Blocked</mfDefaultSorter></th>
+						<th style="text-align: center;">Options</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let u of mf.data">
+						<td>{{ u.givenName }} {{ u.familyName }}</td>
+						<td>{{ u.email }}</td>
+						<td>{{ u.organization }}</td>
+						<td>{{ u.rolesList }}</td>
+						<td>{{ u.emailVerified }}</td>
+						<td>{{ u.blocked }}</td>
+						<td><a (click)="onUpdate(u)" style="cursor:pointer;">Update Roles</a> | 
+						<a *ngIf="!u.blocked" data-toggle="modal" data-target="#blockModal" (click)="onSelect(u)" style="cursor:pointer;">Block</a>
+						<a *ngIf="u.blocked" data-toggle="modal" data-target="#unblockModal" (click)="onSelect(u)" style="cursor:pointer;">Unblock</a></td>		
+					</tr>				
+				</tbody>
+				<tfoot>
+			    	<tr class="noHover">
+			        	<td colspan="7">
+			            	<mfBootstrapPaginator></mfBootstrapPaginator>		            	
+			        	</td>
+			    	</tr>
+			    </tfoot>
+			</table>
+		</div>
+	</div>
+	<div class="modal fade" id="blockModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">Block User</h4>
+				</div>
+				<div class="modal-body">
+					<p>Are you sure?</p>
+				</div>
+				<div class="modal-actions">
+					<button type="button" class="btn-link modal-action" data-dismiss="modal">Cancel</button>
+					<button type="button" class="btn-link modal-action" data-dismiss="modal" (click)="block()">
+					<strong>Continue</strong>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="unblockModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">Unblock User</h4>
+				</div>
+				<div class="modal-body">
+					<p>Are you sure?</p>
+				</div>
+				<div class="modal-actions">
+					<button type="button" class="btn-link modal-action" data-dismiss="modal">Cancel</button>
+					<button type="button" class="btn-link modal-action" data-dismiss="modal" (click)="unblock()">
+					<strong>Continue</strong>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>	
+</div>
+ <div *ngIf="editUser">
+ 	<form class="form-horizontal" #roleForm="ngForm" (ngSubmit)="submitForm()">
+		<div class="col-sm-12">
+			<div class="form-group">
+				<label class="control-label col-sm-4" style="font-size: 16px;">Edit {{ selectedUser.givenName }}</label>
+			</div>
+			<div class="col-sm-offset-2">
+				<div *ngIf="saveSuccess" style="color: green;">Save Successful!</div>
+				<div *ngIf="rolesMessage" style="color: red;">Please select at least one role</div>
+			</div>
+			<label class="control-label col-sm-4">Role(s):<span style="color: red;">*</span></label>
+			<div class="form-group" *ngFor="let r of roleSelections">
+				<div class="col-sm-offset-4" style="padding-left: 15px;">
+					<div class="checkbox custom-control custom-checkbox">
+						<label>
+					    <input type="checkbox" name="{{r.role}}" [checked]="r.isSelected" (change)="checkChanged($event)">
+						<span class="custom-control-indicator"></span>
+							{{ r.roleDescription }}
+						</label>
+					</div>
+				</div>
+			</div>
+			<div style="text-align: center; clear: both;">			
+				<button type="button" class="btn btn-primary" (click)="submitEdits()">Save</button>	
+				<button type="button" class="btn btn-default" (click)="goBack();">Back</button>
+		  	</div>
+	  	</div>
+	</form>     
+</div>
+<div *ngIf="inviteUser">	
+<!-- 	<pt-invite-user style="display: inline-block; width: 90%;"></pt-invite-user> -->
+	<form class="form-horizontal" #inviteUserForm="ngForm" (ngSubmit)="submitForm()">
+	<div class="col-sm-12">
+	<div *ngIf="saveSuccess" class="text-success">Email sent!</div>
+	<div *ngIf="rolesMessage" style="color: red;">Please select at least one role</div>
+		<div class="form-group">
+			<label class="control-label col-sm-4" style="font-size: 16px;">Invite New User</label>
+		</div>
+		<div class="form-group">				
+			<label class="control-label col-sm-4">First Name:<span style="color: red;">*</span></label>
+			<div class="col-sm-4">
+				<input class="form-control" [(ngModel)]="newUser.givenName" name="givenName" maxlength="255" required>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="control-label col-sm-4">Last Name:<span style="color: red;">*</span></label>
+			<div class="col-sm-4"> 
+		  		<input class="form-control" [(ngModel)]="newUser.familyName" name="familyName" maxlength="255" required>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="control-label col-sm-4">Email:<span style="color: red;">*</span></label>
+			<div class="col-sm-4"> 
+		  		<input class="form-control" [(ngModel)]="newUser.email" name="email" type="email" required>			  	
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="control-label col-sm-4">Organization:<span style="color: red;">*</span></label>
+			<div class="col-sm-4"> 
+		  		<input class="form-control" [(ngModel)]="newUser.organization" name="organization" required>			  	
+			</div>
+		</div>
+		<label class="control-label col-sm-4">Role(s):<span style="color: red;">*</span></label>
+		<div class="form-group" *ngFor="let r of roleSelections">
+			<div class="col-sm-offset-4" style="padding-left: 15px;">
+		
+				<div class="checkbox custom-control custom-checkbox">
+					<label>
+				    <input type="checkbox" name="{{r.role}}" [checked]="r.isSelected" (change)="checkChanged($event)">
+					<span class="custom-control-indicator"></span>
+						{{ r.roleDescription }}
+					</label>
+				</div>
+			</div>
+		</div>	
+		<div style="text-align: center; clear: both;">			
+			<button type="button" class="btn btn-primary" (click)="createUser()">Send Invite</button>
+			<button class="btn btn-default" (click)="goBack();">Back</button>
+		</div>
+	</div>
+</form>
+</div>
+

@@ -1,0 +1,57 @@
+<!-- Licensed to the Apache Software Foundation (ASF) under one or more contributor -->
+<!-- license agreements; and to You under the Apache License, Version 2.0. -->
+
+<div class="hr-divider" style="margin-bottom: 20px;">
+	<ul class="nav nav-pills hr-divider-content hr-divider-nav">
+		<li class="active" >
+			<h4 style="text-transform: initial; margin-top: 10px;" *ngIf="training.trainingId == null && auth.canEditParticipantData()">Add New Training</h4> 	
+			<h4 style="text-transform: initial; margin-top: 10px;" *ngIf="training.trainingId != null && auth.canEditParticipantData()">Edit Training</h4>
+		    <h4 style="text-transform: initial; margin-top: 10px;" *ngIf="training.trainingId != null && !auth.canEditParticipantData()">View Training</h4>			
+		</li>		
+	</ul>
+</div>
+<form class="form-horizontal" #trainingDetailForm="ngForm" (ngSubmit)="submitForm()">
+	<div class="col-sm-10">
+		<div class="form-group">
+			<label class="control-label col-sm-4">Training Name:<span style="color: red;">*</span></label>
+			<div class="col-sm-4">
+				<input class="form-control" [(ngModel)]="training.training" name="training" required maxlength="255"
+				[disabled]="!auth.canEditParticipantData()">
+			</div>
+		</div>	
+
+		<div class="form-group">
+			<label class="control-label col-sm-4">Course Id:<span style="color: red;">*</span></label>
+			<div class="col-sm-4">
+				<input class="form-control" [(ngModel)]="training.courseId" name="courseId" required maxlength="255"
+				[disabled]="!auth.canEditParticipantData()">
+			</div>
+		</div>				
+
+		<div class="form-group">
+			<label class="control-label col-sm-4">Training Type:<span style="color: red;">*</span></label>
+			<div class="col-sm-4"> 					
+				<select class="form-control" [(ngModel)]="training.trainingTypeId" name="trainingType" required
+				[disabled]="!auth.canEditParticipantData()">
+					<option *ngFor="let t of trainingTypes" [ngValue]="t.trainingTypeId">{{ t.trainingType }}</option>
+				</select>
+			</div>		
+		</div>
+
+		<div class="form-group">
+			<label class="control-label col-sm-4">Notes:</label>
+			<div class="col-sm-8"> 
+		  		 <textarea class="form-control" [(ngModel)]="training.notes" name="notes" rows="4"
+		  		 [disabled]="!auth.canEditParticipantData()"></textarea>					  	
+			</div>
+		</div>		
+		
+	</div>
+	<div class="col-sm-6">
+	</div>
+	<div style="text-align: center; clear: both;">			
+		<button type="submit" class="btn btn-primary" *ngIf="auth.canEditParticipantData()">Save</button>
+		<button type="cancel" class="btn btn-default" *ngIf="auth.canEditParticipantData()" routerLink="/training">Cancel</button>		
+	    <button type="cancel" class="btn btn-default" *ngIf="!auth.canEditParticipantData()" routerLink="/training">Back</button>			
+  	</div>
+</form> 

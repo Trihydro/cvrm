@@ -1,0 +1,69 @@
+<!-- Licensed to the Apache Software Foundation (ASF) under one or more contributor -->
+<!-- license agreements; and to You under the Apache License, Version 2.0. -->
+
+<button class="btn btn-primary" [routerLink]="['/participantVehicleAvailableList', participantId]" style="margin-bottom: 15px;"
+*ngIf="this.auth.canEditParticipantData()">
+	<span class="icon icon-circle-with-plus" style="padding-right: 5px;"></span>Add Vehicles
+</button>
+<div style="float: right;">
+	<label style="text-align: left; white-space: nowrap;">Show
+	<select class="form-control input-sm" style="display: inline-block; width: 60px;" [(ngModel)]="rowsOnPage">
+		<option [ngValue]="5">5</option>
+		<option [ngValue]="10">10</option>
+		<option [ngValue]="20">20</option>
+	</select>
+	entries
+	</label>
+</div>
+<div *ngIf="participantVehicles.length > 0" class="table-full" style="clear: both;">
+	<div class="table-responsive">
+		<table class="table" id="vehicleTable" [mfData]="participantVehicles" #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage">
+			<thead>
+				<tr>		
+					<th><mfDefaultSorter by="id">Vehicle ID</mfDefaultSorter></th>
+					<th><mfDefaultSorter by="isPrimary">Primary Vehicle</mfDefaultSorter></th>
+					<th style="text-align: center;" *ngIf="this.auth.canEditParticipantData()">Options</th>
+					<th style="text-align: center;" *ngIf="this.auth.canEditParticipantData()">Remove</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let v of mf.data">
+					<td>{{ v.id }}</td>
+					<td *ngIf="v.isPrimary == 'Y'">Yes</td>
+					<td *ngIf="v.isPrimary == 'N'">No</td>
+					<td align="center" *ngIf="this.auth.canEditParticipantData()"><a href="#" *ngIf="v.isPrimary == 'N'">Make Primary</a></td>	
+					<td class="tdWithIcon" *ngIf="this.auth.canEditParticipantData()"><span class="icon icon-trash iconAs-link iconDelete" data-toggle="modal" data-target="#myModal" (click)="onSelect(v)"></span></td>		
+				</tr>				
+			</tbody>
+			<tfoot>
+		    	<tr>
+		        	<td colspan="4">
+		            	<mfBootstrapPaginator></mfBootstrapPaginator>		            	
+		        	</td>
+		    	</tr>
+		    </tfoot>
+		</table>
+	</div>
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">Remove Vehicle</h4>
+			</div>
+			<div class="modal-body">
+				<p>Are you sure?</p>
+			</div>
+			<div class="modal-actions">
+				<button type="button" class="btn-link modal-action" data-dismiss="modal">Cancel</button>
+				<button type="button" class="btn-link modal-action" data-dismiss="modal" (click)="delete()">
+				<strong>Continue</strong>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+<button class="btn btn-primary" [routerLink]="['/participants']" style="float: right;">
+	Back to Participants
+</button>

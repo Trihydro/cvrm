@@ -1,0 +1,39 @@
+Connected Vehicle Resource Manager
+Copyright 2016 Trihydro
+
+This software contains code derived from apache.httpcomponents open source software developed by the Apache HttpComponents project. The original software and related information is available at (https://hc.apache.org).
+
+The web server is Apache Tomcat open source software developed by the Apache Tomcat project (http://tomcat.apache.org).
+
+Portions of the REST web application are based on the Java Spring Framework and Spring Boot which are open source software developed by Pivotal Software. (https://spring.io, https://pivotal.io)
+
+The REST web application data persistence and ORM software includes the Hibernate ORM code developed by the Hibernate Project. The software and related information is available at (http://hibernate.org/orm/).
+
+Streaming parsing supporting the REST web server includes JSON library for Java code developed by the Jackson Project. This open source software is available at (https://github.com/FasterXML/jackson)
+
+Elements of the REST web application incorporate Unirest HTTP Request Client Libraries. This open source software is developed by Mashape. The software and related information is available at (http://unirest.io/ and https://www.mashape.com).
+
+Portions of the REST web application that handle JSON object serialization include the JSON in Java package. The software and related information is available at (http://www.json.org/ and https://github.com/stleary/JSON-java)
+
+Portions of the REST web application process JSON Web Tokens (JWT) and this code uses the Java JWT (JJWT) library developed by Stormpath. The original software and related information is available at (https://java.jsonwebtoken.io/).
+
+Connection to the Oracle Database uses the Oracle jdbc driver software developed by Oracle Corporation. This software and related information is available at (http://www.oracle.com/technetwork/database/features/jdbc/jdbc-ucp-122-3110062.html).
+
+Portions of the website JavaScript contain code derived from jQuery. This open source software is developed by the jQuery Foundation. Original software and related information is available at (https://jquery.com/).
+
+Portions of the website JavaScript use the Angular2 Framework. This open source software is developed by Google. Original software and related information is available at (http://www.angular2.com/).
+
+Portions of the website JavaScript use the Bootstrap Framework. This open source software and related information is available at ( http://getbootstrap.com/).
+
+User management, authentication and login depend on code developed by Auth0 Corporation. This software and related information is available at (https://auth0.com).
+
+Portions of the website graphics software use the Highcharts JavaScript charts. The original software and related information is available at (https://www.highcharts.com).
+
+Portions of the website software use Jasmine for testing. Jasmine is open source software developed by Pivotal Software. (https://jasmine.github.io/, https://pivotal.io)
+
+Portions of the website software use Node.js. Node.js is open source software developed by the Node.js Foundation. The original software and related information is available at (https://nodejs.org/en/).
+
+Portions of the website software were constructed using TypeScript. This open source software is developed by Microsoft Corporation. The software and related information is available at (https://www.typescriptlang.org/index.html).
+
+The software build management uses Apache Maven, which is open source software. The original software and related information is available at (https://maven.apache.org/index.html).
+

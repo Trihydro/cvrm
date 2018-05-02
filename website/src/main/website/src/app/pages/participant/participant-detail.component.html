@@ -1,0 +1,30 @@
+<!-- Licensed to the Apache Software Foundation (ASF) under one or more contributor -->
+<!-- license agreements; and to You under the Apache License, Version 2.0. -->
+
+<div class="hr-divider" style="margin-bottom: 20px;">
+	<ul class="nav nav-pills hr-divider-content hr-divider-nav">
+		<li class="active">
+			<h4 style="text-transform: initial; margin-top: 10px;" *ngIf="participantId == null">Add New Participant</h4> 
+			<button class="btn btn-primary btn-pill" style="border: none;" (click)="tabParticipantSelect()" *ngIf="participantId != null && tabParticipant">Edit Participant</button> 
+			<button class="btn btn-blank" (click)="tabParticipantSelect()" *ngIf="participantId != null && !tabParticipant">Edit Participant</button> 
+		</li>
+		<li *ngIf="participantId != null">
+			<button *ngIf="!tabTraining" class="btn btn-blank" (click)="tabTrainingSelect()">Training</button> 
+			<button *ngIf="tabTraining" class="btn btn-primary btn-pill" style="border: none;" (click)="tabTrainingSelect()">Training</button>
+		</li>
+		<li *ngIf="participantId != null">
+			<button *ngIf="!tabVehicles" class="btn btn-blank" (click)="tabVehiclesSelect()">Vehicles</button> 
+			<button *ngIf="tabVehicles" class="btn btn-primary btn-pill" style="border: none;" (click)="tabVehiclesSelect()">Vehicles</button>
+		</li>
+	</ul>
+</div>
+<div *ngIf="tabParticipant">
+	<participant-form [participantId]="participantId"></participant-form>
+</div>
+<div *ngIf="tabTraining">
+	<pt-participant-training [participantId]="participantId"></pt-participant-training>
+</div>
+<div *ngIf="tabVehicles">
+	<pt-participant-vehicles [participantId]="participantId"></pt-participant-vehicles>
+</div>
+

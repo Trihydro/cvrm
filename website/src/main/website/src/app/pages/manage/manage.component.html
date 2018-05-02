@@ -1,0 +1,21 @@
+<!-- Licensed to the Apache Software Foundation (ASF) under one or more contributor -->
+<!-- license agreements; and to You under the Apache License, Version 2.0. -->
+
+<div class="hr-divider" style="margin-bottom: 20px;">
+	<ul class="nav nav-pills hr-divider-content hr-divider-nav">
+		<li class="active" >		
+			<button class="btn btn-primary btn-pill" style="border: none;" (click)="tabSettingsSelect()" *ngIf="!tabAdmin">Account Settings</button> 
+			<button class="btn btn-blank" (click)="tabSettingsSelect()" *ngIf="tabAdmin">Account Settings</button> 
+		</li>
+		<li *ngIf="auth.isAdmin()">
+			<button *ngIf="!tabAdmin" class="btn btn-blank" (click)="tabAdminSelect()">User Management</button> 
+			<button *ngIf="tabAdmin" class="btn btn-primary btn-pill" style="border: none;" (click)="tabAdminSelect()">User Management</button>
+		</li>	
+	</ul>
+</div>
+<div *ngIf="tabSettings">
+	<pt-settings></pt-settings>
+</div>
+<div *ngIf="tabAdmin">
+	<pt-admin></pt-admin>
+</div>

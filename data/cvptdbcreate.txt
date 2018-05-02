@@ -1,0 +1,208 @@
+CREATE TABLE IF NOT EXISTS role
+(
+    role_id             INTEGER NOT NULL AUTO_INCREMENT,
+    role                VARCHAR(255) NOT NULL,
+    role_description    VARCHAR(255) NOT NULL,
+    PRIMARY KEY (role_id)
+);
+
+CREATE TABLE IF NOT EXISTS log
+(
+    log_id              BIGINT NOT NULL AUTO_INCREMENT,
+    user_login          VARCHAR(255) NOT NULL,
+    entry_date          TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    action              VARCHAR(10) NOT NULL,
+    entity              VARCHAR(100) NOT NULL,
+    record_id           INTEGER,
+    record_data         VARCHAR(1200),
+    PRIMARY KEY (log_id)
+);
+
+
+CREATE TABLE IF NOT EXISTS organization 
+(
+    organization_id     INTEGER NOT NULL AUTO_INCREMENT,
+    name                VARCHAR(255) NOT NULL, 
+    is_trucking_company ENUM('Y', 'N') NOT NULL DEFAULT 'N',
+    PRIMARY KEY (organization_id)
+);
+
+CREATE TABLE IF NOT EXISTS participant 
+(
+    participant_id    INTEGER NOT NULL AUTO_INCREMENT,
+    first_name        VARCHAR(255),
+    last_name         VARCHAR(255),
+    email             VARCHAR(255),
+    organization_id   INTEGER,
+    start_date        DATE,
+    end_date          DATE,
+    PRIMARY KEY (participant_id),
+    FOREIGN KEY part2org (organization_id)
+        REFERENCES organization(organization_id)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS training_type
+(
+    training_type_id INTEGER NOT NULL AUTO_INCREMENT,
+    training_type    VARCHAR(255) NOT NULL,
+    PRIMARY KEY (training_type_id)
+);
+
+
+CREATE TABLE IF NOT EXISTS training
+(
+    training_id       INTEGER NOT NULL AUTO_INCREMENT,
+    training          VARCHAR(255) NOT NULL,
+    course_id         VARCHAR(255) NOT NULL,
+    training_type_id  INTEGER NOT NULL,
+    notes             VARCHAR(1000),
+    PRIMARY KEY (training_id),
+    FOREIGN KEY train2traintype (training_type_id) 
+        REFERENCES training_type(training_type_id)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS participant_training
+(
+    participant_training_id INTEGER NOT NULL AUTO_INCREMENT,
+    participant_id          INTEGER NOT NULL,
+    training_id             INTEGER NOT NULL,
+    time_to_complete        INTEGER,
+    date_completed          DATE,
+    PRIMARY KEY (participant_training_id),
+    FOREIGN KEY parttrn2part (participant_id)
+        REFERENCES participant(participant_id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+    FOREIGN KEY parttrn2trn (training_id)
+        REFERENCES training(training_id)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE
+);
+
+
+CREATE TABLE IF NOT EXISTS equipment_type
+(
+    equipment_type_id INTEGER NOT NULL AUTO_INCREMENT,
+    equipment_type    VARCHAR(255) NOT NULL,
+    PRIMARY KEY (equipment_type_id)
+);
+
+
+CREATE TABLE IF NOT EXISTS equipment
+(
+    equipment_id      INTEGER NOT NULL AUTO_INCREMENT,
+    description       VARCHAR(255),
+    asset_id          VARCHAR(255),
+    equipment_type_id INTEGER NOT NULL,
+    serial_number     VARCHAR(255),
+    model_number      VARCHAR(255),
+    wan               VARCHAR(255),
+    latitude          DECIMAL(9,6),
+    longitude         DECIMAL(9,6),
+    elevation         DECIMAL(10,2),
+    height            DECIMAL(10,2), 
+    date_installed    DATE,
+    notes             VARCHAR(1000),
+    PRIMARY KEY (equipment_id),
+    FOREIGN KEY eqpt2eqpttype (equipment_type_id) 
+        REFERENCES equipment_type(equipment_type_id)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS equipment_component_type
+(
+    equipment_component_type_id INTEGER NOT NULL AUTO_INCREMENT,
+    equipment_component_type    VARCHAR(255) NOT NULL,
+    PRIMARY KEY (equipment_component_type_id)
+);
+
+CREATE TABLE IF NOT EXISTS equipment_component
+(
+    equipment_component_id      BIGINT NOT NULL AUTO_INCREMENT,
+    equipment_component_type_id INTEGER NOT NULL,
+    equipment_id                INTEGER NOT NULL,
+    description                 VARCHAR(255),
+    serial_number               VARCHAR(255),
+    model_number                VARCHAR(255),
+    version                     VARCHAR(60),
+    count                       INTEGER,
+    PRIMARY KEY (equipment_component_id),
+    FOREIGN KEY eqcomp2eqpt (equipment_id)
+        REFERENCES equipment(equipment_id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+    FOREIGN KEY eqcomp2eqcomptype (equipment_component_type_id)
+        REFERENCES equipment_component_type(equipment_component_type_id)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS vehicle_class
+(
+    vehicle_class_id     INTEGER NOT NULL AUTO_INCREMENT,
+    vehicle_class_number INTEGER NOT NULL,
+    vehicle_class        VARCHAR(255) NOT NULL,
+    description          VARCHAR(1000),
+    PRIMARY KEY (vehicle_class_id)
+);
+
+CREATE TABLE IF NOT EXISTS vehicle
+(
+    vehicle_id          INTEGER NOT NULL AUTO_INCREMENT,
+    id                  VARCHAR(255),
+    vehicle_class_id     INTEGER NOT NULL,
+    organization_id     INTEGER NOT NULL,
+    vin                 VARCHAR(255),
+    make                VARCHAR(255),
+    model               VARCHAR(255),
+    notes               VARCHAR(1000),  
+    PRIMARY KEY (vehicle_id),
+    FOREIGN KEY veh2vehclass (vehicle_class_id)
+        REFERENCES vehicle_class(vehicle_class_id)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE,
+    FOREIGN KEY veh2org (organization_id)
+        REFERENCES organization(organization_id)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS participant_vehicle
+(
+    participant_vehicle_id  INTEGER NOT NULL AUTO_INCREMENT,
+    participant_id          INTEGER NOT NULL,
+    vehicle_id              INTEGER NOT NULL,
+    is_primary              ENUM('Y', 'N') NOT NULL DEFAULT 'N',
+    PRIMARY KEY (participant_vehicle_id),
+    FOREIGN KEY partveh2part (participant_id)
+        REFERENCES participant(participant_id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+    FOREIGN KEY partveh2veh (vehicle_id)
+        REFERENCES vehicle(vehicle_id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS vehicle_equipment
+(
+    vehicle_equipment_id    INTEGER NOT NULL AUTO_INCREMENT,
+    vehicle_id              INTEGER NOT NULL,
+    equipment_id            INTEGER NOT NULL UNIQUE,
+    PRIMARY KEY (vehicle_equipment_id),
+    FOREIGN KEY veheqp2veh (vehicle_id)
+        REFERENCES vehicle(vehicle_id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+    FOREIGN KEY veheqp2eqp (equipment_id)
+        REFERENCES equipment(equipment_id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
+
+

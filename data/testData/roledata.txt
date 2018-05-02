@@ -1,0 +1,5 @@
+\N	ROLE_ADMIN	Administrator
+\N	ROLE_READER	Read Only
+\N	ROLE_TRAINING	Trainer
+\N	ROLE_EQUIPMENT	Equipment Admin
+\N	ROLE_VEHICLE	Vehicle Manager

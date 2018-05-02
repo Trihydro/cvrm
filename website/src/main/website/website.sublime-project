@@ -1,0 +1,10 @@
+{
+	"folders":
+	[
+		{
+			"path": "/home/kperry/participanttrackingwebsite/website/src",
+			"file_exclude_patterns": ["app/*.js", "app/*.js.map"]
+		}
+	]
+}
+

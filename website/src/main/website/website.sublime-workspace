@@ -1,0 +1,478 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"font",
+				"font-weight"
+			],
+			[
+				"padding",
+				"padding-left"
+			],
+			[
+				"margin-",
+				"margin-top"
+			],
+			[
+				"d",
+				"display"
+			],
+			[
+				"inl",
+				"inline-block"
+			],
+			[
+				"text",
+				"text-align"
+			],
+			[
+				"padd",
+				"padding-left"
+			],
+			[
+				"st",
+				"style\tAttr"
+			],
+			[
+				"dat",
+				"dateInstalled"
+			],
+			[
+				"pad",
+				"padding-bottom"
+			],
+			[
+				"s",
+				"style\tAttr"
+			],
+			[
+				"mag",
+				"margin-top"
+			],
+			[
+				"text-tr",
+				"text-transform"
+			],
+			[
+				"margin",
+				"margin-top"
+			],
+			[
+				"ba",
+				"background-color"
+			],
+			[
+				"max",
+				"maxlength\tAttr"
+			],
+			[
+				"paddin",
+				"padding-top"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 92.0,
+		"last_filter": "install package",
+		"selected_items":
+		[
+			[
+				"install package",
+				"Package Control: Install Package"
+			],
+			[
+				"typescript",
+				"Set Syntax: AppleScript"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/kperry/participanttrackingwebsite/website/src",
+		"/home/kperry/participanttrackingwebsite/website/src/main",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/dist",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app"
+	],
+	"file_history":
+	[
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/manage/admin.component.html",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/manage/manage.component.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/manage/admin.component.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/manage/settings.component.html",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/app.module.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/manage/invite-user.component.html",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/manage/invite-user.component.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/services/user.service.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/classes/user.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/services/auth.service.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/environments/environment.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/package.json",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/environments/environment.dev.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/nav/nav.component.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/nav/nav.component.html",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/environments/environment.prod.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/environments/environment.test.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/manage/edit-user.component.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/manage/edit-user.component.html",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/account/set-password.component.ts",
+		"/home/kperry/participanttrackingwebsite/service/src/main/java/com/trihydro/cvpt/model/service/UserService.java",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/manage/settings.component.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/manage/manage.component.html",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/account/set-password.component.html",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/classes/email.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/classes/user-password.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/styles.less",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/classes/user-ticket.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/app.component.html",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/protractor.conf.js",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/dist/index.html",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/services/training.service.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/node_modules/redeyed/test/redeyed-mixed.js",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/dist/vendor.bundle.js",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/services/email.service.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/services/participant.service.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/classes/role.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/equipment/equipment-component-list.component.html",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/participant/participant-form.component.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/equipment/equipment-detail.component.html",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/equipment/equipment-component-list.component.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/equipment/equipment.component.html",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/participant/participant-form.component.html",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/vehicle/vehicle.component.html",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/training/training-detail.component.html",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/training/training.component.html",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/participant/participant.component.html",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/services/role.service.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/app-routing.module.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/manage/user-edit.component.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/manage/user-edit.component.html",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/services/vehicle.service.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/services/management.service.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/services/auth-guard.service.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/dashboard/dashboard.component.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/services/report.service.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/services/vehicle-class.service.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/services/vehicle-equipment.service.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/services/vehicle-type.service.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/services/organization.service.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/services/training-type.service.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/services/participant-training.service.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/services/equipment-component-type.service.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/services/participant-vehicle.service.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/services/equipment.service.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/services/equipment-type.service.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/services/equipment-component.service.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/app.component.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/index.html",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/account/login.component.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/account/login.component.html",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/vehicle/vehicle.component.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/auth.config.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/manage/settings-component.html",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/manage/settings-component.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/account/register.component.html",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/account/reset-password.component.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/account/register.component.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/account/reset-password.component.html",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/.gitignore",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/angular-cli.json",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/classes/participants-trained.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/dashboard/dashboard.component.html",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/participant/participant-training.component.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/participant/participant-training.component.html",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/participant/participant-training-available-list.component.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/participant/participant-training-available-list.component.html",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/participant/participant-detail.component.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/participant/participant-vehicle-available-list.component.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/participant/participant-vehicle-available-list.component.html",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/classes/training.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/classes/participant-training.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/vehicle/vehicle-equipment-available-list.component.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/vehicle/vehicle-equipment.component.html",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/participant/participant-vehicle.component.html",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/participant/participant-detail.component.html",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/classes/equipment-deployed.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/theme-dashboard/gulpfile.js",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/equipment/equipment-detail.component.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/classes/vehicle-count.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/classes/vehicle-counts.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/vehicle/vehicle-equipment-full-list.component.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/vehicle/vehicle-detail.component.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/vehicle/vehicle-equipment-full-list.component.html",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/participant/participant-vehicle-full-list.component.html",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/participant/participant-vehicle-full-list.component.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/classes/equipment.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/classes/vehicle.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/vehicle/vehicle-equipment.component.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/vehicle/vehicle-detail.component.html",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/classes/vehicle-equipment.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/participant/participant-vehicle.component.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/classes/participant-vehicle.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/equipment/equipment-component-detail.component.html",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/equipment/equipment-component-detail.component.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/classes/vehicle-type.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/classes/equipment-type.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/classes/equipmentType.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/classes/vehicle-class.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/participant/participant.component.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/services/equipmentType.service.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/vehicles/vehicle.component.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/organization/organization-detail.component.html",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/pages/organization/organization-detail.component.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/classes/organization.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/classes/equipment-component.ts",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/theme-dashboard/less/variables.less",
+		"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app/classes/participant.ts"
+	],
+	"find":
+	{
+		"height": 46.0
+	},
+	"find_in_files":
+	{
+		"height": 90.0,
+		"where_history":
+		[
+			"/home/kperry/participanttrackingwebsite/website/src/main/website/src",
+			"/home/kperry/participanttrackingwebsite/website/src",
+			"/home/kperry/participanttrackingwebsite/service",
+			"/home/kperry/participanttrackingwebsite/",
+			"/home/kperry/participanttrackingwebsite/website/src",
+			"/home/kperry/participanttrackingwebsite/",
+			"/home/kperry/participanttrackingwebsite/website/src/main/website/",
+			"/home/kperry/participanttrackingwebsite/website/src/main/website/src/",
+			"/home/kperry/participanttrackingwebsite/website/src/main/website/src/app",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"}\n",
+			"rolese",
+			"createu",
+			"givenname",
+			"rolesel",
+			"createdUser",
+			";\n",
+			"4200",
+			"id_token",
+			"bearer",
+			"Default App",
+			"kimperry18@gmail.com",
+			"passw",
+			"hs256",
+			"type",
+			"WYDOTCVP_logo_transparent",
+			"inline.bundle.js",
+			"localhost",
+			"}`, ",
+			"users",
+			"localhost",
+			"favicon.ico",
+			"favicon.iso",
+			"{\n",
+			"().",
+			");\n",
+			"this",
+			"role",
+			"post",
+			";\t\t",
+			"@input",
+			"canview",
+			"canv",
+			"canview",
+			">View<",
+			"update",
+			"boo",
+			"var options = {\n  //   theme: {\n  //     primaryColor: 'green'\n  //   }  \n  // };",
+			"alert(\"test\")",
+			"alert",
+			"authservice",
+			"}",
+			"dev",
+			"fulllist",
+			"full-list",
+			"date",
+			"vehicleCounts",
+			"getVehicleOrganizations",
+			"\t}",
+			"deployed",
+			");\n",
+			"VehicleEquipmentComponent",
+			"*ngif",
+			"ngif",
+			"Primary",
+			"datatable",
+			"equipmenttype.ser",
+			"equipmenttype",
+			"equipment-type",
+			"iconAs-link",
+			"equipmenttype",
+			");\n",
+			"participant",
+			"ParticipantDetailComponent",
+			"ParticipantService",
+			";\n",
+			"ng2boot",
+			"gridstyle",
+			"fff",
+			"equipmentTypeId",
+			"#f4f4f4",
+			"favicon",
+			"index.html",
+			"equipment",
+			"baseUrl",
+			"{",
+			"equipmentTypeId",
+			"systemjs",
+			"system",
+			"if",
+			"}}\t\t\t\t",
+			"quick"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.doc":
+	{
+		"height": 0.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "website.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"~/angular2/projects/heroes.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 425.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

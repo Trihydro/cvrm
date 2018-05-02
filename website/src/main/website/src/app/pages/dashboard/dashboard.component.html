@@ -1,0 +1,47 @@
+<!-- Licensed to the Apache Software Foundation (ASF) under one or more contributor -->
+<!-- license agreements; and to You under the Apache License, Version 2.0. -->
+
+  <div class="row">
+        <div class="col-lg-6">
+            <div class="panel panel-default">
+                <div class="panel-heading" style="background-color: #17314C;">
+                    <h3 class="panel-title" style="color: white;">Participants</h3>
+                </div>
+                <div class="panel-body">
+                    <ul class="list-group">
+                   		<li class="list-group-item" *ngFor="let p of participantsTrained">
+                    		<div *ngIf="p.label == null">{{ p.type }}: {{ p.count }} </div>
+                            <div *ngIf="p.label != null">{{ p.type }}: {{ p.label }} </div>
+                    	</li>                                            
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="panel panel-default" style="margin-bottom: 0;">
+                <div class="panel-heading" style="background-color: #17314C;">
+                    <h3 class="panel-title" style="color: white;">Equipment Deployed</h3>
+                </div>
+                <div class="panel-body">
+                    <ul class="list-group">
+                    	<li class="list-group-item" *ngFor="let e of equipmentDeployed">
+                    		{{ e.percentCount }}/{{ e.totalCount }} {{ e.label }}
+                    	</li>
+                    </ul>
+                </div>
+            </div>
+        </div>        
+    </div>
+<div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default"> 
+                <div class="panel-heading" style="background-color: #17314C;">
+                    <h3 class="panel-title" style="color: white;">Vehicles by Company</h3>
+                </div>
+                <div class="panel-body" style="height: 340px;">
+                    <div id="container" style="width: 100%;"><chart [options]="options" style="height: 300px;"></chart></div>
+                </div>
+            </div>
+        </div>        
+    </div>
+

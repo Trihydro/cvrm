@@ -1,0 +1,4 @@
+\N	Wyoming DOT	N
+\N	Royal Crest Dairy	Y
+\N	Trihydro	N
+\N	Wyoming State Police	N

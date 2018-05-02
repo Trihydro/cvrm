@@ -1,0 +1,5 @@
+\N	Rex	Smith	rsmith@gmail.com	1	2017-03-05
+\N	Roxy	Perry	rperry@gmail.com	1	2017-01-01
+\N	Cali	Zumpf	czumpf@gmail.com	1	2017-02-08
+\N	Olli	Jones	ojones@yahoo.com	2	2017-01-02	2017-03-23
+\N	Kira	Karina	kkarina@gmail.com	2

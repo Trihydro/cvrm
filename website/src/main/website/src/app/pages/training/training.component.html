@@ -1,0 +1,68 @@
+<!-- Licensed to the Apache Software Foundation (ASF) under one or more contributor -->
+<!-- license agreements; and to You under the Apache License, Version 2.0. -->
+
+<button class="btn btn-primary" (click)="addNewDetail()" style="margin-bottom: 15px;" *ngIf="auth.canEditParticipantData()">
+	<span class="icon icon-circle-with-plus" style="padding-right: 5px;"></span>Add New Training
+</button>
+<div style="float: right;">
+	<label style="text-align: left; white-space: nowrap;">Show
+	<select class="form-control input-sm" style="display: inline-block; width: 60px;" [(ngModel)]="rowsOnPage">
+		<option [ngValue]="5">5</option>
+		<option [ngValue]="10">10</option>
+		<option [ngValue]="20">20</option>
+	</select>
+	entries
+	</label>
+</div>
+<div class="table-full" style="clear: both;">
+	<div class="table-responsive">
+		<table class="table" [mfData]="trainings" #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage">
+			<thead>
+				<tr>		
+					<th><mfDefaultSorter by="trainingType">Type</mfDefaultSorter></th>
+					<th><mfDefaultSorter by="training">Name</mfDefaultSorter></th>
+					<th><mfDefaultSorter by="courseId">Id</mfDefaultSorter></th>
+					<th *ngIf="auth.canEditParticipantData()" style="text-align: center;">Edit</th>
+					<th *ngIf="auth.canEditParticipantData()" style="text-align: center;">Delete</th>
+					<th *ngIf="!auth.canEditParticipantData()" style="text-align: center;">View</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let t of mf.data">
+					<td>{{t.trainingType}}</td>
+					<td>{{t.training}}</td>
+					<td>{{t.courseId}}</td>
+					<td *ngIf="auth.canEditParticipantData()" class="tdWithIcon"><span class="icon icon-edit iconAs-link iconEdit" [routerLink]="['/trainingDetail', t.trainingId]"></span></td>	
+					<td *ngIf="auth.canEditParticipantData()" class="tdWithIcon"><span class="icon icon-trash iconAs-link iconDelete" data-toggle="modal" data-target="#myModal" (click)="onSelect(t)"></span></td>		
+					<td *ngIf="!auth.canEditParticipantData()" class="tdWithIcon"><span class="icon icon-eye iconAs-link iconAdd" [routerLink]="['/trainingDetail', t.trainingId]"></span></td>	
+				</tr>				
+			</tbody>
+			<tfoot>
+	    		<tr class="noHover">
+	        		<td colspan="5">
+	        	    	<mfBootstrapPaginator></mfBootstrapPaginator>		            	
+        			</td>
+	    		</tr>
+		    </tfoot>
+		</table>
+	</div>
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">Delete Training</h4>
+			</div>
+			<div class="modal-body">
+				<p>Are you sure?</p>
+			</div>
+			<div class="modal-actions">
+				<button type="button" class="btn-link modal-action" data-dismiss="modal">Cancel</button>
+				<button type="button" class="btn-link modal-action" data-dismiss="modal" (click)="delete()">
+				<strong>Continue</strong>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,71 @@
+<!-- Licensed to the Apache Software Foundation (ASF) under one or more contributor -->
+<!-- license agreements; and to You under the Apache License, Version 2.0. -->
+
+<div style="float:left;">
+<button class="btn btn-primary" (click)="addNewDetail()" style="margin-bottom: 15px;" *ngIf="this.auth.canEditVehicleData()">
+	<span class="icon icon-circle-with-plus" style="padding-right: 5px;"></span>Add New Vehicle
+</button>
+
+</div>
+<div style="float: right;">
+	<label style="text-align: left; white-space: nowrap;">Show
+	<select class="form-control input-sm" style="display: inline-block; width: 60px;" [(ngModel)]="rowsOnPage">
+		<option [ngValue]="5">5</option>
+		<option [ngValue]="10">10</option>
+		<option [ngValue]="15">15</option>
+	</select>
+	entries
+	</label>
+</div>
+<div class="table-full" style="clear: both;">
+	<div class="table-responsive">
+		<table class="table" id="vehicleTable" [mfData]="vehicles" #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage">
+			<thead>
+				<tr>		
+					<th><mfDefaultSorter by="id">Vehicle ID</mfDefaultSorter></th>
+					<th><mfDefaultSorter by="make">Make</mfDefaultSorter></th>
+					<th><mfDefaultSorter by="model">Model</mfDefaultSorter></th>
+					<th style="text-align: center;" *ngIf="this.auth.canEditVehicleData()">Edit</th>
+					<th style="text-align: center;" *ngIf="this.auth.canEditVehicleData()">Delete</th>
+					<th style="text-align: center;" *ngIf="!this.auth.canEditVehicleData()">View</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let v of mf.data">
+					<td>{{ v.id }}</td>
+					<td>{{ v.make }}</td>
+					<td>{{ v.model }}</td>
+					<td *ngIf="this.auth.canEditVehicleData()" class="tdWithIcon"><span class="icon icon-edit iconAs-link iconEdit" [routerLink]="['/vehicleDetail', v.vehicleId]"></span></td>	
+					<td *ngIf="this.auth.canEditVehicleData()"class="tdWithIcon"><span class="icon icon-trash iconAs-link iconDelete" data-toggle="modal" data-target="#myModal" (click)="onSelect(v)"></span></td>		
+					<td *ngIf="!this.auth.canEditVehicleData()" class="tdWithIcon"><span class="icon icon-eye iconAs-link iconAdd" [routerLink]="['/vehicleDetail', v.vehicleId]"></span></td>	
+				</tr>				
+			</tbody>
+			<tfoot>
+		    	<tr>
+		        	<td colspan="5">
+		            	<mfBootstrapPaginator></mfBootstrapPaginator>		            	
+		        	</td>
+		    	</tr>
+		    </tfoot>
+		</table>
+	</div>
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">Delete Vehicle</h4>
+			</div>
+			<div class="modal-body">
+				<p>Are you sure?</p>
+			</div>
+			<div class="modal-actions">
+				<button type="button" class="btn-link modal-action" data-dismiss="modal">Cancel</button>
+				<button type="button" class="btn-link modal-action" data-dismiss="modal" (click)="delete()">
+				<strong>Continue</strong>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>

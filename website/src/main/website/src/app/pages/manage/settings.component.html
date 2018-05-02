@@ -1,0 +1,10 @@
+<!-- Licensed to the Apache Software Foundation (ASF) under one or more contributor -->
+<!-- license agreements; and to You under the Apache License, Version 2.0. -->
+
+<div *ngIf="auth.authenticated() && auth.userProfile">	
+		<form class="form-horizontal" #resetPasswordForm="ngForm" (ngSubmit)="submitForm()">			
+		<div>			
+			<button type="submit" class="btn btn-primary">Reset Password</button>
+	  	</div>
+	</form>
+</div>

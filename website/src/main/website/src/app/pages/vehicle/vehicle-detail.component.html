@@ -1,0 +1,96 @@
+<!-- Licensed to the Apache Software Foundation (ASF) under one or more contributor -->
+<!-- license agreements; and to You under the Apache License, Version 2.0. -->
+
+<div class="hr-divider" style="margin-bottom: 20px;">
+	<ul class="nav nav-pills hr-divider-content hr-divider-nav">
+		<li class="active" *ngIf="auth.canEditVehicleData()">
+			<h4 style="text-transform: initial; margin-top: 10px;" *ngIf="vehicle.vehicleId == null">Add New Vehicle</h4> 
+			<button class="btn btn-primary btn-pill" style="border: none;" (click)="tabVehicleSelect()" *ngIf="vehicle.vehicleId != null && tabVehicle">Edit Vehicle</button> 
+			<button class="btn btn-blank" (click)="tabVehicleSelect()" *ngIf="vehicle.vehicleId != null && !tabVehicle">Edit Vehicle</button> 
+		</li>
+		<li class="active" *ngIf="!auth.canEditVehicleData()">
+			<button class="btn btn-primary btn-pill" style="border: none;" (click)="tabVehicleSelect()" *ngIf="vehicle.vehicleId != null && tabVehicle">View Vehicle</button> 
+			<button class="btn btn-blank" (click)="tabVehicleSelect()" *ngIf="vehicle.vehicleId != null && !tabVehicle">View Vehicle</button> 
+		</li>
+		<li *ngIf="vehicle.vehicleId != null">
+			<button *ngIf="!tabEquipment" class="btn btn-blank" (click)="tabEquipmentSelect()">Equipment</button> 
+			<button *ngIf="tabEquipment" class="btn btn-primary btn-pill" style="border: none;" (click)="tabEquipmentSelect()">Equipment</button>
+		</li>		
+	</ul>
+</div>
+
+<div *ngIf="tabVehicle">
+	<form class="form-horizontal" #vehicleDetailForm="ngForm" (ngSubmit)="submitForm()">	
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="control-label col-sm-4">Vehicle Id:<span style="color: red;">*</span></label>
+				<div class="col-sm-8">
+					<input class="form-control" [(ngModel)]="vehicle.id" name="id" required maxlength="255"  
+					[disabled]="!auth.canEditVehicleData()">
+				</div>
+			</div>	
+
+			<div class="form-group">
+				<label class="control-label col-sm-4">VIN:</label>
+				<div class="col-sm-8">
+					<input class="form-control" [(ngModel)]="vehicle.vin" name="vin" maxlength="255"
+					[disabled]="!auth.canEditVehicleData()">
+				</div>
+			</div>				
+
+			<div class="form-group">
+				<label class="control-label col-sm-4">Vehicle Class:<span style="color: red;">*</span></label>
+				<div class="col-sm-8"> 					
+					<select class="form-control" [(ngModel)]="vehicle.vehicleClassId" name="vehicleClass" required
+					[disabled]="!auth.canEditVehicleData()">
+						<option *ngFor="let v of vehicleClasses" [ngValue]="v.vehicleClassId">{{ v.vehicleClass }}</option>
+					</select>
+				</div>		
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-sm-4">Organization:<span style="color: red;">*</span></label>
+				<div class="col-sm-8"> 					
+					<select class="form-control" [(ngModel)]="vehicle.organizationId" name="organization" required
+					[disabled]="!auth.canEditVehicleData()">
+						<option *ngFor="let o of organizations" [ngValue]="o.organizationId">{{ o.name }}</option>
+					</select>
+				</div>		
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="control-label col-sm-4">Make:</label>
+				<div class="col-sm-8"> 
+			  		<input class="form-control" [(ngModel)]="vehicle.make" name="make" maxlength="255"
+			  		[disabled]="!auth.canEditVehicleData()">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-sm-4">Model:</label>
+				<div class="col-sm-8"> 
+			  		<input class="form-control" [(ngModel)]="vehicle.model" name="model" maxlength="255"
+			  		[disabled]="!auth.canEditVehicleData()">			  	
+				</div>
+			</div>	
+
+			<div class="form-group">
+				<label class="control-label col-sm-4">Notes:</label>
+				<div class="col-sm-8"> 
+			  	    <textarea class="form-control" [(ngModel)]="vehicle.notes" name="notes" rows="4"
+			  	    [disabled]="!auth.canEditVehicleData()"></textarea>				  	
+				</div>
+			</div>					
+		</div>
+		<div style="text-align: center; clear: both;">			
+			<button type="submit" class="btn btn-primary" *ngIf="auth.canEditVehicleData()">Save</button>
+			<button type="cancel" class="btn btn-default" *ngIf="auth.canEditVehicleData()" 
+			routerLink="/vehicles">Cancel</button>			
+			<button type="cancel" class="btn btn-default" *ngIf="!auth.canEditVehicleData()" routerLink="/vehicles">Back</button>		
+	  	</div>
+	</form>
+</div>
+<div *ngIf="tabEquipment">
+	<pt-vehicle-equipment [vehicleId]="vehicle.vehicleId"></pt-vehicle-equipment>
+</div>

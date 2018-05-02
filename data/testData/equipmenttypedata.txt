@@ -1,0 +1,5 @@
+\N	RSU
+\N	OBU-S OBU-D  Environment Sensors  HMI  CAN Bus
+\N	OBU-S OBU-D  HMI  CAN Bus
+\N	OBU-S OBU-D  HMI
+\N	OBU-D  HMI
