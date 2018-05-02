@@ -47,7 +47,7 @@ The follwing instructions describe the processes to download, build, and run the
 **Step 1**: Clone the solution from GitHub using:
 
 ```bash
-git clone https://github.com/richardlsmith/cvrm.git
+git clone https://github.com/Trihydro/cvrm.git
 ```
 
 **Step 2**: Start MySQL in a terminal
