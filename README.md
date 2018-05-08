@@ -65,7 +65,7 @@ mysql> use cvpt;
 mysql> source <project install location>/data/cvptdbcreate;
 ```
 
-**Step 5**: Replace all instances of &lt;username&gt; and &lt;password&gt; the file participanttrackigwebsite/data/testData.loadData.cmd with your MySQL username and password. 
+**Step 5**: Replace all instances of &lt;username&gt; and &lt;password&gt; the file cvrm/data/testData.loadData.cmd with your MySQL username and password. 
 Replace the instances of &lt;db-username&gt; and &lt;db-password&gt; in the file cvrm/service/src/main/resources/application.properties with your MySQL username and password.
 
 
