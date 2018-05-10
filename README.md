@@ -1,4 +1,6 @@
 # Connected Vehicle Resource Manager
+This application was developed with the support of the USDOT ITS Joint Program Office.
+
 ## Description
 
 This application provides a website to manage resources associated with a Connected Vehicle project. The website provides a series of forms to enter and view resources such as participants, training courses, vehicles and devices that are part of the project. Graphs showing resource usage and device deployment are provided in the website. Role based access restrictions limit the visibility of data to specific user roles. 
