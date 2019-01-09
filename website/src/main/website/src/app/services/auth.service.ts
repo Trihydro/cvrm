@@ -16,7 +16,8 @@ export class Auth {
 
 
   lock = new Auth0Lock('p4aA5vgDwSKz39gvVFlxsrlxYnSfY5YM', 'cvrm-its-dot.auth0.com',  {
-   allowSignUp: false,   
+   allowSignUp: false, 
+   configurationBaseUrl: 'https://cdn.auth0.com',  
    auth: {
      autoParseHash: false,
      params: {
@@ -41,19 +42,23 @@ export class Auth {
     this.userProfile = JSON.parse(localStorage.getItem('profile'));   
     // Add callback for the Lock `authenticated` event
     this.lock.on("authenticated", (authResult) => {
-      localStorage.setItem('id_token', authResult.idToken);
-      localStorage.setItem('access_token', authResult.accessToken);
-      console.log("access: " + authResult.accessToken);
-      console.log("id: " + authResult.idToken);
+      
       // Fetch profile information
-      this.lock.getProfile(authResult.idToken, (error, profile) => {
+      this.lock.getUserInfo(authResult.accessToken, (error, profile) => {
         if (error) {
           // Handle error
-          alert(error);
+          console.log(error);
           return;
-        }
-        console.log("app meta: " + profile.app_metadata);
+        }        
+        localStorage.setItem('id_token', authResult.idToken);
+        localStorage.setItem('access_token', authResult.accessToken);
         localStorage.setItem('profile', JSON.stringify(profile));
+        this.userProfile = profile;
+
+        console.log("app meta: " + profile.app_metadata);
+        console.log("access: " + authResult.accessToken);
+        console.log("id: " + authResult.idToken);
+
         this.userProfile = profile;
         this.router.navigate(['/dashboard']);
       });

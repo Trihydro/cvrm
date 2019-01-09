@@ -18,7 +18,7 @@ export class NavComponent{
 	trainingActive: string;
 	devEnv: boolean;
 
-  	constructor(private auth: Auth) { 
+  	constructor(private auth: Auth) { 				
     	if(environment.envName == "dev"){
     		this.devEnv = true;
     	}
